@@ -1,0 +1,79 @@
+/* Conteneur principal */
+.homepage-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0;
+  background-color: #f0f0f0; /* Couleur d'arrière-plan global */
+}
+
+/* Section gauche avec le titre et les boutons */
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px; /* Ajouter un peu de padding pour espacer le contenu */
+}
+
+/* Titre stylisé */
+.title {
+  font-size: 4rem;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.mydil {
+  color: #d68b1f; /* Couleur pour "My" */
+}
+
+.connect {
+  color: #346ca8; /* Couleur pour "Connect" */
+}
+
+/* Style des boutons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%; /* Permet aux boutons de prendre toute la largeur de la section */
+  justify-content: center;
+  align-items: center; /* Centre les boutons */
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #000;
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: fit-content; /* Ajuste la largeur au texte du bouton */
+}
+
+.btn:hover {
+  background-color: #333;
+}
+
+/* Section droite avec le logo et fond bleu */
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #346ca8; /* Couleur de fond bleu */
+  min-height: 100vh; /* S'assure que la hauteur correspond à 100% de la fenêtre */
+  padding: 20px; /* Espace autour du logo */
+}
+
+/* Style du logo */
+.logo {
+  max-width: 300px; /* Ajuster la taille du logo si nécessaire */
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,96 @@
+/* Conteneur principal du formulaire */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Style pour les champs de saisie (input) */
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    outline: none;
+    border-color: #346ca8; /* Couleur du focus */
+  }
+  
+  /* Conteneur du mot de passe avec l'icône */
+  .password-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .password-container .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* Style pour la section "Remember Me" et "Forgot Password?" */
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .options label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  
+  .options input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .options a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #346ca8;
+  }
+  
+  .options a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style pour le bouton de connexion */
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #346ca8;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #275a8c; /* Changement de couleur au hover */
+  }
+  
+  /* Pour centrer le formulaire */
+  form {
+    width: 100%;
+  }
+  
