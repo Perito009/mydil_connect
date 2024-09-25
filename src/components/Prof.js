@@ -1,4 +1,7 @@
+import React from 'react';
 import './Prof.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 const Prof = () => {
   const tools = [
@@ -29,6 +32,19 @@ const Prof = () => {
       </aside>
 
       <div className="main-content">
+        {/* Ajout de la section de recherche et notification */}
+        <div className="search-notification">
+          <input type="text" placeholder="Rechercher..." className="search-bar" />
+          <div className="notification-bell">
+            <span className="notification-count">1</span>
+            <FontAwesomeIcon icon={faBell} className="bell-icon" />
+          </div>
+          <div className="profile-icon">
+            <FontAwesomeIcon icon={faUserCircle} className="profile-icon-img" />
+          </div>
+        </div>
+
+        {/* Section du formulaire */}
         <div className="form-container">
           <h2>Ajouter un Outil</h2>
           <form className="tool-form">
