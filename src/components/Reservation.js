@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Reservation.css';
 
 const Reservation = () => {
   const items = [
-    { name: 'Imprimante 3D', img: '/path/to/3d-printer.png' },
-    { name: 'Imprimante Lazer', img: '/path/to/laser-printer.png' },
-    { name: 'Arduino', img: '/path/to/arduino.png' },
-    { name: 'Casque VR', img: '/path/to/vr-headset.png' },
-    { name: 'Robot', img: '/path/to/robot.png' },
-    { name: 'Raspberry', img: '/path/to/raspberry.png' },
+    { name: 'Imprimante 3D', img: '3d-printer.jpg', description: 'Une imprimante 3D pour créer des objets en plastique.' },
+    { name: 'Imprimante Laser', img: 'laser-printer.jpg', description: 'Une imprimante laser pour des impressions de haute qualité.' },
+    { name: 'Arduino', img: 'arduino.jpg', description: 'Une plateforme de prototypage électronique open-source.' },
+    { name: 'Casque VR', img: 'vr-headset.jpg', description: 'Un casque de réalité virtuelle pour une expérience immersive.' },
+    { name: 'Robot', img: 'robot.jpg', description: 'Un robot programmable pour diverses tâches.' },
+    { name: 'Raspberry', img: 'raspberry.jpg', description: 'Un micro-ordinateur polyvalent pour divers projets.' },
   ];
+
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleInfoClick = (item) => {
+    setSelectedItem(item);
+  };
 
   return (
     <div className="reservation-container">
@@ -33,9 +39,14 @@ const Reservation = () => {
             <div className="item-card" key={item.name}>
               <img src={item.img} alt={item.name} className="item-image" />
               <div className="buttons">
-                <button className="btn-info">Infos</button>
+                <button className="btn-info" onClick={() => handleInfoClick(item)}>Infos</button>
                 <button className="btn-reserver">Réserver</button>
               </div>
+              {selectedItem && selectedItem.name === item.name && (
+                <div className="item-description">
+                  <p>{item.description}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
