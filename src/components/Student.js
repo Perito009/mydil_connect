@@ -21,13 +21,21 @@ const Student = () => {
     e.preventDefault();
 
     // Simuler la vérification de l'email et du mot de passe
-    const correctEmail = "test@mydil.com";
-    const correctPassword = "password123";
+    const correctEmail1 = "test1@mydil.com";
+    const correctPassword1 = "password123";
 
-    if (email === correctEmail && password === correctPassword) {
+    const correctEmail2 = "test2@mydil.com";
+    const correctPassword2 = "password456";
+
+
+    if (email === correctEmail1 && password === correctPassword1) {
       // Rediriger vers la page de réservation en cas de succès
       navigate('/reservation');
-    } else {
+    } else if (email === correctEmail2 && password === correctPassword2) {
+      // Afficher un message d'erreur si la connexion échoue
+      navigate('/reservation');
+    }
+    else {
       // Afficher un message d'erreur si la connexion échoue
       setError("Email ou mot de passe incorrect.");
     }

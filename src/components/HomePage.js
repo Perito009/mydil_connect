@@ -12,7 +12,7 @@ const HomePage = () => {
         </h1>
         <div className="buttons">
           <Link to="/student" className="btn">Étudiants</Link>
-          <Link to="/prof" className="btn">Intervenants</Link>
+          <Link to="/student" className="btn">Intervenants</Link>
         </div>
       </div>
       <div className="right-section">

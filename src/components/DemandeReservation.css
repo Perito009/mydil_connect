@@ -1,0 +1,98 @@
+/* Conteneur principal */
+.demande-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: white;
+  }
+  
+  /* Barre latérale */
+  .sidebar {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .sidebar .logo {
+    width: 100px;
+    margin-bottom: 40px;
+  }
+  
+  .notification {
+    font-size: 1.2rem;
+    color: #000;
+    text-align: center;
+  }
+  
+  /* Section principale */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .demande-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tool-image {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+  }
+  
+  .demande-description h2 {
+    font-size: 1.5rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .btn-accept, .btn-reject {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-reject {
+    background-color: #e74c3c;
+  }
+  
+  .btn-accept:hover {
+    background-color: #229954;
+  }
+  
+  .btn-reject:hover {
+    background-color: #c0392b;
+  }
+  
+  .status-message {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .status-message.acceptée {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .status-message.refusée {
+    background-color: #e74c3c;
+    color: white;
+  }
+  

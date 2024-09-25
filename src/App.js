@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import Prof from './components/Prof';
 import Student from './components/Student';
 import Reservation from './components/Reservation';
+import DemandeReservation from './components/DemandeReservation';
 import './App.css';  // Importer ton fichier CSS
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/prof" element={<Prof />} />
             <Route path="/student" element={<Student />} />
             <Route path="/Reservation" element={<Reservation />} />
+            <Route path="/DemandeReservation" element={<DemandeReservation/>} />
           </Routes>
         </Router>
       </header>
