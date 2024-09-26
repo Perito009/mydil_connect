@@ -1,6 +1,6 @@
 .reservation-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     font-family: Arial, sans-serif;
     padding: 20px;

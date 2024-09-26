@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Reservation.css';
+import { useNavigate } from 'react-router-dom'; // Import de useNavigate
 
 const Reservation = () => {
   const items = [
@@ -12,35 +13,35 @@ const Reservation = () => {
   ];
 
   const [selectedItem, setSelectedItem] = useState(null);
+  const navigate = useNavigate(); // Initialisation de useNavigate
 
   const handleInfoClick = (item) => {
     setSelectedItem(item);
   };
 
+  
   return (
     <div className="reservation-container">
       <aside className="sidebar">
         <img src="logo.png" alt="Logo MyDIL" className="logo" />
-        <ul>
-          {items.map((item) => (
-            <li key={item.name}>{item.name}</li>
-          ))}
-        </ul>
+        
       </aside>
 
       <div className="main-content">
-        <div className="search-bar">
-          <input type="text" placeholder="Search..." />
-          <button className="profile-icon">👤</button>
+        {/* Ajout de la section de recherche et notification */}
+        <div className="search-notification">
+          <input type="text" placeholder="Rechercher..." className="search-bar" />
+          
         </div>
 
+        {/* Section des articles à réserver */}
         <div className="items-grid">
           {items.map((item) => (
             <div className="item-card" key={item.name}>
               <img src={item.img} alt={item.name} className="item-image" />
               <div className="buttons">
                 <button className="btn-info" onClick={() => handleInfoClick(item)}>Infos</button>
-                <button className="btn-reserver">Réserver</button>
+                <button className="btn-reserver"onClick={() => navigate('/Reserveroutil')}>Reserver</button> 
               </div>
               {selectedItem && selectedItem.name === item.name && (
                 <div className="item-description">

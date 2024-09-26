@@ -6,14 +6,43 @@ import { faBell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 const Reserveroutil = () => {
     const [projectDescription, setProjectDescription] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
+    const currentHour = new Date().toLocaleTimeString();  // Constante pour l'heure actuelle
 
     const handleDateChange = (event) => {
         setSelectedDate(event.target.value);
     };
 
     const handleReservation = () => {
-        alert(`Réservation effectuée pour le projet : ${projectDescription} à la date du ${selectedDate}`);
+        const reservationDetails = {
+            description: projectDescription,
+            date: selectedDate,
+            time: currentHour  // On inclut l'heure dans les détails de la réservation
+        };
+    
+        // Envoyer les détails de la réservation au backend
+        fetch('http://localhost:5000/api/reservations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reservationDetails)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Erreur lors de la réservation');
+        })
+        .then(data => {
+            console.log("Réservation réussie :", data);
+            alert('Réservation réussie');
+        })
+        .catch(error => {
+            console.error("Erreur de réservation :", error);
+            alert('Erreur lors de la réservation');
+        });
     };
+    
 
     return (
         <div className="reservation-container">
@@ -24,7 +53,7 @@ const Reserveroutil = () => {
             <div className="search-notification">
                 <input type="text" placeholder="Rechercher..." className="search-bar" />
                 <div className="notification-bell">
-                    <span className="notification-count">1</span>
+                    <span className="notification-count"></span>
                     <FontAwesomeIcon icon={faBell} className="bell-icon" />
                 </div>
                 <div className="profile-icon">

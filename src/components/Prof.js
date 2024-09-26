@@ -2,6 +2,7 @@ import React from 'react';
 import './Prof.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'; // Import de useNavigate
 
 const Prof = () => {
   const tools = [
@@ -9,6 +10,8 @@ const Prof = () => {
     { name: 'Arduino', version: '2.1', mode: 'Manuel', statut: 'Indisponible', description: 'Kit Arduino pour prototypage.' },
     { name: 'Casque VR', version: '3.0', mode: 'Automatique', statut: 'Disponible', description: 'Casque de réalité virtuelle.' }
   ];
+
+  const navigate = useNavigate(); // Initialisation de useNavigate
 
   const handleAddTool = () => {
     // Logique pour ajouter un nouvel outil
@@ -18,6 +21,10 @@ const Prof = () => {
   const handleRemoveTool = (tool) => {
     // Logique pour retirer un outil
     console.log(`Outil supprimé: ${tool.name}`);
+  };
+
+  const handleBellClick = () => {
+    navigate('/DemandeReservation'); // Redirige vers la page DemendeReservation.js
   };
 
   return (
@@ -35,7 +42,7 @@ const Prof = () => {
         {/* Ajout de la section de recherche et notification */}
         <div className="search-notification">
           <input type="text" placeholder="Rechercher..." className="search-bar" />
-          <div className="notification-bell">
+          <div className="notification-bell" onClick={handleBellClick}> {/* Ajout de l'événement onClick */}
             <span className="notification-count">1</span>
             <FontAwesomeIcon icon={faBell} className="bell-icon" />
           </div>

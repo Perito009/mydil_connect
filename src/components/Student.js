@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Pour rediriger vers Reservation.js
+import { useNavigate } from 'react-router-dom';
 import './Student.css';
 
 const Student = () => {
@@ -9,35 +9,41 @@ const Student = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   
-  const navigate = useNavigate();  // Hook de React Router pour la redirection
+  const navigate = useNavigate();
 
-  // Fonction pour afficher ou masquer le mot de passe
   const togglePasswordVisibility = () => {
     setPasswordShown(!passwordShown);
   };
 
   // Fonction pour gérer la soumission du formulaire de connexion
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Simuler la vérification de l'email et du mot de passe
-    const correctEmail1 = "test1@mydil.com";
-    const correctPassword1 = "password123";
+    try {
+      // Requête POST vers le backend
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
 
-    const correctEmail2 = "test2@mydil.com";
-    const correctPassword2 = "password456";
+      const data = await response.json();
 
-
-    if (email === correctEmail1 && password === correctPassword1) {
-      // Rediriger vers la page de réservation en cas de succès
-      navigate('/reservation');
-    } else if (email === correctEmail2 && password === correctPassword2) {
-      // Afficher un message d'erreur si la connexion échoue
-      navigate('/reservation');
-    }
-    else {
-      // Afficher un message d'erreur si la connexion échoue
-      setError("Email ou mot de passe incorrect.");
+      if (response.status === 200) {
+        // Rediriger l'utilisateur selon son rôle
+        if (data.role === 'student') {
+          navigate('/reservation');
+        } else if (data.role === 'prof') {
+          navigate('/prof');
+        }
+      } else {
+        setError(data.message); // Afficher l'erreur du backend
+      }
+    } catch (err) {
+      console.error('Erreur lors de la connexion:', err);
+      setError('Une erreur est survenue lors de la connexion.');
     }
   };
 
@@ -61,7 +67,7 @@ const Student = () => {
                 name="email"
                 placeholder="Entrer votre email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}  // Stocker l'email dans le state
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -76,7 +82,7 @@ const Student = () => {
                   placeholder="Entrer votre mot de passe"
                   style={{ paddingRight: '40px' }}
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}  // Stocker le mot de passe dans le state
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <span
@@ -89,7 +95,7 @@ const Student = () => {
                     cursor: 'pointer',
                   }}
                 >
-                
+                  {/* Icône pour afficher/masquer le mot de passe */}
                 </span>
               </div>
             </div>
